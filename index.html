@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6',
+            muted: {
+              foreground: '#6b7280',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .card {
+        @apply bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden;
+      }
+      .card-header {
+        @apply p-4 border-b border-gray-100;
+      }
+      .card-title {
+        @apply text-lg font-semibold;
+      }
+      .card-content {
+        @apply p-4;
+      }
+      .avatar {
+        @apply relative flex h-24 w-24 shrink-0 overflow-hidden rounded-full;
+      }
+      .avatar-image {
+        @apply aspect-square h-full w-full;
+      }
+      .avatar-fallback {
+        @apply flex h-full w-full items-center justify-center rounded-full bg-gray-100 text-gray-800 font-medium text-xl;
+      }
+      .badge {
+        @apply inline-flex items-center rounded-full border border-gray-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 bg-gray-100 text-gray-800;
+      }
+      .btn {
+        @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+      }
+      .btn-primary {
+        @apply bg-primary text-white hover:bg-primary/90 h-9 px-4 py-2;
+      }
+      .btn-outline {
+        @apply border border-gray-200 bg-white hover:bg-gray-100 hover:text-gray-900 h-9 px-4 py-2;
+      }
+      .btn-ghost {
+        @apply hover:bg-gray-100 hover:text-gray-900 h-9 px-4 py-2;
+      }
+      .btn-icon {
+        @apply h-9 w-9 p-0;
+      }
+      .tabs {
+        @apply w-full;
+      }
+      .tabs-list {
+        @apply inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500;
+      }
+      .tab-trigger {
+        @apply inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:text-gray-950 data-[state=active]:shadow-sm;
+      }
+      .sr-only {
+        @apply absolute left-[-9999px] top-[-9999px];
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Profile Sidebar -->
+      <div class="md:col-span-1 space-y-6">
+        <div class="card">
+          <div class="card-content pt-6">
+            <div class="flex flex-col items-center space-y-4">
+              <div class="avatar">
+                <img class="avatar-image" src="profile.jpg" alt="Profile picture with snowy mountain background" />
+                <div class="avatar-fallback hidden">JD</div>
+              </div>
+              <div class="space-y-1 text-center">
+                <h2 class="text-2xl font-bold">Lohit K</h2>
+                <p class="text-muted-foreground">Software Engineer</p>
+              </div>
+              <div class="flex space-x-2">
+                <button class="btn btn-primary">Follow</button>
+                <button class="btn btn-outline">Message</button>
+                <button class="btn btn-ghost btn-icon" title="More options">
+                  <i data-lucide="more-horizontal" class="h-4 w-4"></i>
+                </button>
+              </div>
+              <div class="flex space-x-2 mt-4">
+                <a href="https://www.linkedin.com/in/lohitkotian/" class="btn btn-outline btn-icon" title="LinkedIn">
+                  <i data-lucide="linkedin" class="h-4 w-4"></i>
+                  <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://github.com/lrkaussie" class="btn btn-outline btn-icon" title="GitHub">
+                  <i data-lucide="github" class="h-4 w-4"></i>
+                  <span class="sr-only">GitHub</span>
+                </a>
+                <a href="mailto:lrkaussie@gmail.com" class="btn btn-outline btn-icon" title="Email">
+                  <i data-lucide="mail" class="h-4 w-4"></i>
+                  <span class="sr-only">Email</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <div class="flex items-center gap-2 text-muted-foreground">
+                <i data-lucide="map-pin" class="h-4 w-4"></i>
+                <span>Melbourne, Australia</span>
+              </div>
+              <div class="flex items-center gap-2 text-muted-foreground">
+                <i data-lucide="link-2" class="h-4 w-4"></i>
+                <a href="#" class="text-primary hover:underline">www.buzzingbeetech.com</a>
+              </div>
+              <div class="flex items-center gap-2 text-muted-foreground">
+                <i data-lucide="calendar-days" class="h-4 w-4"></i>
+                <span>Joined August 2013</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">About</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-muted-foreground">
+                Dedicated and detail-oriented Automation Engineer with 19 years of experience in software development, test automation, and
+                quality assurance, specializing in e-commerce platforms. Proficient in designing, developing, and executing automated test
+                scripts to ensure seamless functionality, performance, and user experience across web and mobile applications. Skilled in
+                leveraging industry-standard automation frameworks to streamline testing for e-commerce ecosystems, including payment
+                gateways, product catalogs, and order management systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Skills</h3>
+          </div>
+          <div class="card-content">
+            <div class="flex flex-wrap gap-2">
+              <span class="badge">Automation Framework</span>
+              <span class="badge">Integration Testing</span>
+              <span class="badge">API Testing</span>
+              <span class="badge">Dev Ops</span>
+              <span class="badge">Mobile Test Automation</span>
+              <span class="badge">Web Test Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="md:col-span-2 space-y-6">
+        <div class="tabs" id="profile-tabs">
+          <div class="tabs-list w-full grid grid-cols-2">
+            <button class="tab-trigger" data-tab="portfolio" data-state="active">Portfolio</button>
+            <button class="tab-trigger" data-tab="experience">Experience</button>
+          </div>
+
+          <div class="tab-content space-y-4 mt-6" id="portfolio-content">
+            <h3 class="text-xl font-semibold">Recent Projects</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Project 1 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/AI-powered-search-and-qanda" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop" alt="AI powered search and Q&A system - Abstract visualization of artificial intelligence" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">AI-Powered Document Search & Q&A System</h4>
+                    <p class="text-sm text-muted-foreground">Python, LangChain, OpenAI, FastAPI</p>
+                  </div>
+                </a>
+              </div>
+              
+              <!-- Project 2 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/bigcommerce-image-optimizer" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop" alt="Image optimization and processing visualization" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">Bulk Product Image Optimizer for BigCommerce</h4>
+                    <p class="text-sm text-muted-foreground">JavaScript, Node.js, BigCommerce API</p>
+                  </div>
+                </a>
+              </div>
+              
+              <!-- Project 3 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/e-commerce" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop" alt="E-commerce platform with shopping cart and online store visualization" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">E-commerce Platform</h4>
+                    <p class="text-sm text-muted-foreground">TypeScript, Next.js, Stripe, Prisma</p>
+                  </div>
+                </a>
+              </div>
+              
+              <!-- Project 4 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/hospital-tracker" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2028&auto=format&fit=crop" alt="Hospital management and tracking system interface" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">Hospital Tracker</h4>
+                    <p class="text-sm text-muted-foreground">JavaScript, React, Express.js, MongoDB</p>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Project 5 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/to-do" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=2072&auto=format&fit=crop" alt="Todo list application interface" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">Todo Application</h4>
+                    <p class="text-sm text-muted-foreground">TypeScript, React, Redux, TailwindCSS</p>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Project 6 -->
+              <div class="card">
+                <a href="https://github.com/lrkaussie/auto-mobile" class="block">
+                  <div class="aspect-video w-full overflow-hidden rounded-t-lg">
+                    <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=2070&auto=format&fit=crop" alt="Mobile automation testing framework visualization" class="h-full w-full object-cover">
+                  </div>
+                  <div class="card-header p-4">
+                    <h4 class="card-title text-lg">Mobile Automation Framework</h4>
+                    <p class="text-sm text-muted-foreground">Ruby, Appium, Cucumber, Jenkins</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content space-y-6 mt-6 hidden" id="experience-content">
+            <h3 class="text-xl font-semibold">Work Experience</h3>
+            <div class="space-y-6">
+              <!-- Job 1 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Automation Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Energy Market Operations</span>
+                  <span class="text-muted-foreground">Nov 2024 - Present</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Develops C# API scripts for seamless system integration, spearheads development of robust API automation frameworks using RestClient, and drives continuous improvement in testing efficiency through strategic automation implementation.
+                </p>
+              </div>
+              
+              <!-- Job 2 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Automation Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Retail & Convenience Stores</span>
+                  <span class="text-muted-foreground">Feb 2024 - Sep 2024</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Implemented automation frameworks, optimized test execution cycles, and pioneered new automation approaches for complex testing challenges, resulting in improved system stability and reduced regression issues.
+                </p>
+              </div>
+              
+              <!-- Job 3 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Automation Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Department Store Retail</span>
+                  <span class="text-muted-foreground">Feb 2022 - Jan 2024</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Developed automation scripts with Ruby, optimized Playwright framework, and implemented Selenium, JUnit, TestNG for robust automated testing while mentoring testers and leading knowledge sharing sessions.
+                </p>
+              </div>
+
+              <!-- Job 4 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Software Developer</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Fashion Retail & E-commerce</span>
+                  <span class="text-muted-foreground">Jun 2019 - Jan 2022</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Developed software with C# and Python, led code reviews, mentored juniors, and optimized CI/CD pipelines with DevOps while contributing to Agile processes.
+                </p>
+              </div>
+
+              <!-- Job 5 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Automation Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Fashion Retail & E-commerce</span>
+                  <span class="text-muted-foreground">Jun 2018 - May 2019</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Designed Ruby test framework with Selenium, integrated tests into AWS CI pipeline, and developed mobile automation proof of concept with Ruby and Appium.
+                </p>
+              </div>
+
+              <!-- Job 6 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Automation Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Retail & Department Stores</span>
+                  <span class="text-muted-foreground">Jul 2016 - May 2018</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Designed Ruby-based test framework with Selenium, enhanced testing efficiency by 40%, and integrated Sauce Labs for cross-browser testing while developing API automation suites with Postman.
+                </p>
+              </div>
+
+              <!-- Job 7 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">QA Lead</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Luxury Beauty & Cosmetics</span>
+                  <span class="text-muted-foreground">Feb 2016 - Jun 2016</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led testing for Drupal e-Commerce across 9+ brands, managed offshore team coordination, and developed Ruby automation framework with Cucumber, Selenium, and WATIR.
+                </p>
+              </div>
+
+              <!-- Job 8 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Lead Quality Engineer</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Banking & Financial Services</span>
+                  <span class="text-muted-foreground">Jan 2015 - Jan 2016</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led automation of UI tests using Ruby, Cucumber, Watir, RSpec, managed test schedules and resources, and optimized test execution strategies for improved system integration.
+                </p>
+              </div>
+
+              <!-- Job 9 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">QA Lead</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Mobile Technology & Digital Services</span>
+                  <span class="text-muted-foreground">Feb 2014 - Aug 2014</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led QA team testing mobile web apps, built Appium-Selenium framework on Linux, and set up private cloud for global app testing while completing AWS migration testing ahead of schedule.
+                </p>
+              </div>
+
+              <!-- Job 10 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Pharmaceutical Retail</span>
+                  <span class="text-muted-foreground">Feb 2013 - Nov 2013</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led QA initiatives, tracked release candidates, and executed comprehensive testing for order processing and payment systems while improving validation processes for WMS/MMS.
+                </p>
+              </div>
+
+              <!-- Job 11 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Gaming & Entertainment</span>
+                  <span class="text-muted-foreground">Sep 2012 - Dec 2012</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led Unix-based backend testing for gaming systems, implemented end-to-end validation protocols, and led cross-functional testing initiatives for gaming interfaces.
+                </p>
+              </div>
+
+              <!-- Job 12 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Government Transport Services</span>
+                  <span class="text-muted-foreground">Sep 2011 - Dec 2011</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led GUI testing for web-based Court-to-Case application, performed gap analysis, and analyzed crash logs in Unix using Putty to improve system reliability.
+                </p>
+              </div>
+
+              <!-- Job 13 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Mobile App Development</span>
+                  <span class="text-muted-foreground">May 2011 - Sep 2011</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led quality efforts improving software reliability and performance, managed client expectations, and enhanced software testing processes while implementing quality initiatives.
+                </p>
+              </div>
+
+              <!-- Job 14 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Digital Media & News</span>
+                  <span class="text-muted-foreground">Nov 2010 - Apr 2011</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Led cross-device testing, implemented Selenium RC automation, developed comprehensive test plans, and generated detailed test reports for informed decision-making.
+                </p>
+              </div>
+
+              <!-- Job 15 -->
+              <div class="border-l-2 border-gray-200 pl-4 pb-2">
+                <h4 class="font-semibold">Senior Test Analyst</h4>
+                <div class="flex justify-between text-sm">
+                  <span class="text-muted-foreground">Social Media & Digital Platform</span>
+                  <span class="text-muted-foreground">Mar 2010 - Nov 2010</span>
+                </div>
+                <p class="mt-2 text-sm text-muted-foreground">
+                  Developed and implemented test strategies for web applications, led functional testing for social media integration, and ensured web accessibility compliance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Simple tabs functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.tab-trigger');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active state from all tabs
+          tabs.forEach(t => {
+            t.setAttribute('data-state', '');
+          });
+          
+          // Set active state on clicked tab
+          tab.setAttribute('data-state', 'active');
+          
+          // Hide all tab content
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+          });
+          
+          // Show selected tab content
+          const tabId = tab.getAttribute('data-tab');
+          document.getElementById(`${tabId}-content`).classList.remove('hidden');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
